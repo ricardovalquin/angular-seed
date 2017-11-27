@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Category} from '../../core/model/category/category';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  @Input() public categories: Category[];
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.categories);
   }
 
 }

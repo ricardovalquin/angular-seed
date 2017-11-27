@@ -9,6 +9,8 @@ import {STATES} from './states/states';
 import { DashboardComponent } from './states/dashboard/dashboard.component';
 import { UsersComponent } from './states/users/users.component';
 import { CoreModule } from './core/core.module';
+import {CategoryService} from './core/resource/category/category.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     UIRouterModule.forRoot({
       states: STATES,
       useHash: false,
@@ -25,7 +28,9 @@ import { CoreModule } from './core/core.module';
     }),
     CoreModule
   ],
-  providers: [],
+  providers: [
+    CategoryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
