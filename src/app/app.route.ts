@@ -1,5 +1,6 @@
 import {AppComponent} from './app.component';
-import {CategoryService} from './core/resource/category/category.service';
+import {CategoryResource} from './core/resource/category/category.resource';
+import {CategoryService} from './core/service/category/category.service';
 
 export const state = {
   name: 'app',
@@ -8,8 +9,9 @@ export const state = {
   resolve: [
     {
       token: 'categories',
-      deps: [CategoryService],
-      resolveFn: (catService) => catService.getCategories().toPromise()
+      deps: [CategoryResource],
+      resolveFn: (catService) => catService.getCategories()
+        .toPromise()
         .then(categories => categories)
     }
   ]

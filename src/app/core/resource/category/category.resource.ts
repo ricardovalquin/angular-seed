@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
 import {Category} from '../../model/category/category';
 
 @Injectable()
-export class CategoryService {
+export class CategoryResource {
 
   private apiConfig = vimeoAPIConfig;
 

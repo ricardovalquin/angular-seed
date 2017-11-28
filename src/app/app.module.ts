@@ -9,8 +9,9 @@ import {STATES} from './states/states';
 import { DashboardComponent } from './states/dashboard/dashboard.component';
 import { UsersComponent } from './states/users/users.component';
 import { CoreModule } from './core/core.module';
-import {CategoryService} from './core/resource/category/category.service';
+import {CategoryResource} from './core/resource/category/category.resource';
 import {HttpClientModule} from '@angular/common/http';
+import {CategoryService} from './core/service/category/category.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {HttpClientModule} from '@angular/common/http';
     CoreModule
   ],
   providers: [
+    CategoryResource,
     CategoryService
   ],
   bootstrap: [AppComponent]
