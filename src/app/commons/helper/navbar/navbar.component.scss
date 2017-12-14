@@ -1,0 +1,19 @@
+.nav-component {
+  background-color: mediumpurple;
+  max-width: 200px;
+  display: inline-block;
+
+  ul {
+    padding-left: 5px;
+  }
+  .category-item {
+    display: block;
+    padding: 10px;
+    list-style: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+

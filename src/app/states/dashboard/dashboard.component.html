@@ -1,8 +1,11 @@
-<div>
+<div class="dashboard-component">
   <app-navbar [categoryList]="categories" [selectedCategory]="selectedCategory"></app-navbar>
-  <p>
-    dashboard works!
-  </p>
-  <h2>selected category:</h2>
-  <p>{{selectedCategory.id}}</p>
+
+  <div class="main-content-block">
+    <p>
+      dashboard works!
+    </p>
+    <h2>selected category:</h2>
+    <p>{{selectedCategory.id}}</p>
+  </div>
 </div>

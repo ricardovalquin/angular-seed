@@ -1,13 +1,10 @@
-<div>
-  <p>
-    start navbar works!
-  </p>
+<div class="nav-component">
   <ul>
-    <li *ngFor="let category of categoryList" (click)="changeCategory(category)">{{category.id}}</li>
+    <li *ngFor="let category of categoryList"
+      (click)="changeCategory(category)" class="category-item">
+      {{category.id}}
+    </li>
   </ul>
-  <p>
-    end navbar works!
-  </p>
 </div>
 
 
