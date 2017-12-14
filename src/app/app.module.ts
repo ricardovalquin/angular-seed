@@ -12,12 +12,14 @@ import { CoreModule } from './core/core.module';
 import {CategoryResource} from './core/resource/category/category.resource';
 import {HttpClientModule} from '@angular/common/http';
 import {CategoryService} from './core/service/category/category.service';
+import { NavbarComponent } from './commons/helper/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    UsersComponent
+    UsersComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import {CategoryService} from './core/service/category/category.service';
     UIRouterModule.forRoot({
       states: STATES,
       useHash: false,
-      config: uiRouterConfigFn
+      config: uiRouterConfigFn,
+      otherwise: '/home'
     }),
     CoreModule
   ],

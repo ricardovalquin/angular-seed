@@ -1,8 +1,8 @@
 <div>
+  <app-navbar [categoryList]="categories" [selectedCategory]="selectedCategory"></app-navbar>
   <p>
     dashboard works!
   </p>
-  <ul>
-    <li *ngFor="let category of categories">{{category.id}}</li>
-  </ul>
+  <h2>selected category:</h2>
+  <p>{{selectedCategory.id}}</p>
 </div>

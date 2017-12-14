@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Category} from '../../core/model/category/category';
+import {CategoryService} from '../../core/service/category/category.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,11 +10,18 @@ import {Category} from '../../core/model/category/category';
 export class DashboardComponent implements OnInit {
 
   @Input() public categories: Category[];
+  public selectedCategory: Category;
 
-  constructor() { }
+  constructor(private categoryService: CategoryService) {}
 
   ngOnInit() {
-    console.log(this.categories);
+    this.categoryService.selectedCategory.subscribe((category) => {
+      if (!category.id && this.categories) {
+        this.categoryService.setSelectedCategory(this.categories[0]);
+      } else {
+        this.selectedCategory = category;
+      }
+    });
   }
 
 }
