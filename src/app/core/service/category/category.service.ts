@@ -1,29 +1,29 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Category} from '../../model/category/category';
 import {CategoryResource} from '../../resource/category/category.resource';
 import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class CategoryService {
 
   private _categoryList: Observable<Category[]>;
-  private _selectedCategory: BehaviorSubject<Category>;
+  private _selectedCategory: Subject<Category>;
 
   constructor(private categoryResource: CategoryResource) {
-    this._selectedCategory = new BehaviorSubject(new Category());
+    this._selectedCategory = new Subject();
   }
 
   get categoryList(): Observable<Category[]> {
     if (!this._categoryList) {
       this._categoryList = this.categoryResource.getCategories();
       return this._categoryList;
-    }else {
+    } else {
       return this._categoryList;
     }
   }
 
-  get selectedCategory(): BehaviorSubject<Category> {
+  get selectedCategory(): Subject<Category> {
     return this._selectedCategory;
   }
 

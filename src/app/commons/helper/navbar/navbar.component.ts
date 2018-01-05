@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.categoryService.selectedCategory.subscribe(
       (category) => {
-        console.log('navBar: ' + category.id);
         this.selectedCategory = category;
       }
     );

@@ -13,6 +13,9 @@ import {CategoryResource} from './core/resource/category/category.resource';
 import {HttpClientModule} from '@angular/common/http';
 import {CategoryService} from './core/service/category/category.service';
 import { NavbarComponent } from './commons/helper/navbar/navbar.component';
+import {VideoResource} from './core/resource/video/video.resource';
+import {VideoService} from './core/service/video/video.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,14 @@ import { NavbarComponent } from './commons/helper/navbar/navbar.component';
       config: uiRouterConfigFn,
       otherwise: '/home'
     }),
-    CoreModule
+    CoreModule,
+    NgbModule.forRoot()
   ],
   providers: [
     CategoryResource,
-    CategoryService
+    CategoryService,
+    VideoResource,
+    VideoService
   ],
   bootstrap: [AppComponent]
 })
