@@ -2,10 +2,8 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Category} from '../../core/model/category/category';
 import {CategoryService} from '../../core/service/category/category.service';
 import {Video} from '../../core/model/video/video';
-import {VideoService} from '../../core/service/video/video.service';
-import {Transition} from '@uirouter/angular/lib';
+import {Transition, StateService} from '@uirouter/angular/lib';
 import {Subscription} from 'rxjs/Subscription';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,26 +14,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   @Input() public categories: Category[];
   @Input() public selectedCategory: Category;
-  public categoryVideos: Video[];
+  @Input() public categoryVideos: Video[];
   public currentPage: number;
+  public totalVideos: number;
   private selectedCategorySubscriber: Subscription;
 
-  constructor(private categoryService: CategoryService, private videoService: VideoService,
-              private transition: Transition) {}
+  constructor(private categoryService: CategoryService, private transition: Transition,
+              private stateService: StateService) {}
 
   public changePage(page: number): void {
     this.currentPage = page;
-    this.videoService.getVideosByCategory(this.selectedCategory, page);
+    this.stateService.go('.', {page: page});
   }
 
   ngOnInit() {
     this.currentPage = this.transition.params().page;
     this.selectedCategorySubscriber = this.categoryService.selectedCategory.subscribe((category: Category) => {
       this.selectedCategory = category;
-      this.videoService.getVideosByCategory(category).subscribe((videoList: Video[]) => {
-        console.log(videoList);
-        this.categoryVideos = videoList;
-        });
     });
     this.categoryService.setSelectedCategory(this.selectedCategory);
   }

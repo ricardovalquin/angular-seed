@@ -1,7 +1,7 @@
 <div class="nav-component">
   <ul>
     <li *ngFor="let category of categoryList"
-      (click)="changeCategory(category)" class="category-item">
+        uiSref="." [uiParams]="{ category: category.id, page: currentPage }" uiSrefActive="active" class="category-item">
       {{category.id}}
     </li>
   </ul>

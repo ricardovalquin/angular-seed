@@ -1,5 +1,5 @@
 <div class="dashboard-component">
-  <app-navbar [categoryList]="categories" [selectedCategory]="selectedCategory"></app-navbar>
+  <app-navbar [categoryList]="categories" [currentPage]="currentPage"></app-navbar>
 
   <div class="main-content-block">
     <p>
@@ -10,5 +10,7 @@
     <ul>
       <li *ngFor="let video of categoryVideos">{{video.name}}</li>
     </ul>
+    <ngb-pagination [collectionSize]="70" [(page)]="currentPage" (pageChange)="changePage($event)">
+    </ngb-pagination>
   </div>
 </div>
