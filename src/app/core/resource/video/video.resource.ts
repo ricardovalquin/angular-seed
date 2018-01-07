@@ -18,9 +18,18 @@ export class VideoResource {
       .map((response: any) => {
         const videos: Video [] = [];
         response.data.forEach(dto => {
+          dto.uri = dto.uri.split('/')[2];
           videos.push(new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri));
         });
         return videos;
+      });
+  }
+
+  getVideoDetails(category: string, video: string): Observable<Video> {
+    return this.http.get(`
+    ${this.apiConfig['apiBaseUrl']}categories/${category}/videos/${video}?access_token=${this.apiConfig['accessToken']}
+    `).map((response: any) => {
+        return response;
       });
   }
 }

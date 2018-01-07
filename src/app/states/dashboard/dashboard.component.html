@@ -8,7 +8,11 @@
     <h2>selected category:</h2>
     <p>{{selectedCategory.id}}</p>
     <ul>
-      <li *ngFor="let video of categoryVideos">{{video.name}}</li>
+      <li *ngFor="let video of categoryVideos">
+        <a uiSref="details" [uiParams]="{ categoryId: selectedCategory.id, videoId: video.id }">
+          {{video.name}}
+        </a>
+        </li>
     </ul>
     <ngb-pagination [collectionSize]="70" [(page)]="currentPage" (pageChange)="changePage($event)">
     </ngb-pagination>

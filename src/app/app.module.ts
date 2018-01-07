@@ -16,13 +16,15 @@ import { NavbarComponent } from './commons/helper/navbar/navbar.component';
 import {VideoResource} from './core/resource/video/video.resource';
 import {VideoService} from './core/service/video/video.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { VideoDetailsComponent } from './states/video-details/video-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     UsersComponent,
-    NavbarComponent
+    NavbarComponent,
+    VideoDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,7 @@ export const state = {
   component: DashboardComponent,
   params: {
     page: '1'
-  },
-  resolve: [
+  }, resolve: [
     {
       token: 'categories',
       deps: [CategoryService],

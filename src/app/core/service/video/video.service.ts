@@ -13,4 +13,7 @@ export class VideoService {
     return this.videoResource.getVideosByCategory(category, page ? page : 1);
   }
 
+  getVideoDetails(categoryId: string, videoId: string): Observable<Video> {
+    return this.videoResource.getVideoDetails(categoryId, videoId);
+  }
 }
