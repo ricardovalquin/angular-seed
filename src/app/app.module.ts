@@ -17,6 +17,8 @@ import {VideoResource} from './core/resource/video/video.resource';
 import {VideoService} from './core/service/video/video.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VideoDetailsComponent } from './states/video-details/video-details.component';
+import { SearchComponent } from './commons/helper/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { VideoDetailsComponent } from './states/video-details/video-details.comp
     DashboardComponent,
     UsersComponent,
     NavbarComponent,
-    VideoDetailsComponent
+    VideoDetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { VideoDetailsComponent } from './states/video-details/video-details.comp
       otherwise: '/home'
     }),
     CoreModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [
     CategoryResource,

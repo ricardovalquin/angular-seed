@@ -1,22 +1,90 @@
+$gt-sm-min-width: 960px !default;
+
+// General variables
+$nav-bar-width: 300px !default;
+
+//navbar
+$inactive-category-color: #aba4c1 !default;
+$hover-category-color: rgba(111,96,161,1) !default;
+$active-category-color: #FFFFFF !default;
+
+
 .nav-component {
-  background-color: mediumpurple;
-  max-width: 200px;
+  height: 100%;
   display: inline-block;
+  position: fixed;
+  vertical-align: top;
+  width: $nav-bar-width;
+
+  background: rgba(111,96,161,1);
+  background: -moz-linear-gradient(top, rgba(111,96,161,1) 0%, rgba(83,70,125,1) 50%, rgba(44,34,77,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(111,96,161,1)), color-stop(50%, rgba(83,70,125,1)), color-stop(100%, rgba(44,34,77,1)));
+  background: -webkit-linear-gradient(top, rgba(111,96,161,1) 0%, rgba(83,70,125,1) 50%, rgba(44,34,77,1) 100%);
+  background: -o-linear-gradient(top, rgba(111,96,161,1) 0%, rgba(83,70,125,1) 50%, rgba(44,34,77,1) 100%);
+  background: -ms-linear-gradient(top, rgba(111,96,161,1) 0%, rgba(83,70,125,1) 50%, rgba(44,34,77,1) 100%);
+  background: linear-gradient(to bottom, rgba(111,96,161,1) 0%, rgba(83,70,125,1) 50%, rgba(44,34,77,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6f60a1', endColorstr='#2c224d', GradientType=0 );
+
+  @media (max-width: $gt-sm-min-width) {
+    display: none;
+    width: 0;
+  }
 
   ul {
     padding-left: 5px;
   }
   .category-item {
+    color: $inactive-category-color;
+    cursor: pointer;
     display: block;
-    padding: 10px;
-    list-style: none;
+    font-size: 20px;
+    font-weight: normal;
+    outline: none;
+    padding: 0 10px;
 
-    &:hover {
+    &::before {
+      background-color: $inactive-category-color;
+      content: '';
+      display: inline-block;
+      height: 35px;
+      margin: 0 10px;
+      vertical-align: middle;
+      width: 5px;
+
+    }
+
+    &:hover{
+      background-color: $hover-category-color;
+      border-radius: 5px;
       cursor: pointer;
     }
   }
   .active {
-    color: white;
+    color: $active-category-color !important;
+
+    &::before {
+      background-color: $active-category-color !important;
+    }
   }
+
+  .close-nav {
+    color: $active-category-color;
+    display: none;
+    float: right;
+    font-size: 25px;
+    outline: none;
+    padding: 10px;
+
+    @media (max-width: $gt-sm-min-width){
+      display: inline-block;
+    }
+
+    a {
+      color: $active-category-color;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
 }
 
