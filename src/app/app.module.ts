@@ -32,14 +32,14 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgbModule.forRoot(),
     UIRouterModule.forRoot({
       states: STATES,
       useHash: false,
       config: uiRouterConfigFn,
-      otherwise: '/home'
+      otherwise: '/home/animation?page=1'
     }),
     CoreModule,
-    NgbModule.forRoot(),
     FormsModule
   ],
   providers: [

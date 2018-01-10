@@ -3,21 +3,11 @@
   <app-navbar [categoryList]="categories" [currentPage]="currentPage"></app-navbar>
 
   <div class="main-content-block">
-    <!--<ul>-->
-      <!--<li *ngFor="let video of categoryVideos">-->
-        <!--<a uiSref="details" [uiParams]="{ categoryId: selectedCategory.id, videoId: video.id }">-->
-          <!--{{video.name}}-->
-        <!--</a>-->
-        <!--</li>-->
-    <!--</ul>-->
-    <!--<ngb-pagination [collectionSize]="70" [(page)]="currentPage" (pageChange)="changePage($event)">-->
-    <!--</ngb-pagination>-->
     <div class="video-wrapper">
       <div class="video-container">
         <div class="figure-wrapper" *ngFor="let video of categoryVideos"
              uiSref="details" [uiParams]="{ categoryId: selectedCategory.id, videoId: video.id }">
           <figure class="animated zoomIn">
-            <!--<img ng-if="!video.picture.link" src="assets/images/vimeo-video.jpg" alt="video img" width="300" height="170">-->
             <img ng-if="video.pictures.sizes[2].link" src="{{video.picture.link}}" alt="Video-img" width="300" height="170"/>
             <figcaption class="video-name">{{video.name}}.</figcaption>
           </figure>
@@ -25,7 +15,13 @@
       </div>
       <div class="paginator">
         <div class="pagination-container">
-          <ngb-pagination [collectionSize]="70" [(page)]="currentPage" (pageChange)="changePage($event)">
+          <ngb-pagination
+            [collectionSize]="70"
+            [(page)]="currentPage"
+            (pageChange)="changePage($event)"
+            [directionLinks]="false"
+            size="sm"
+            class="pagination-sm">
           </ngb-pagination>
         </div>
       </div>
