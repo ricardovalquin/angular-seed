@@ -59,6 +59,7 @@ $active-category-color: #FFFFFF !default;
       cursor: pointer;
     }
   }
+
   .active {
     color: $active-category-color !important;
 
@@ -83,6 +84,14 @@ $active-category-color: #FFFFFF !default;
       color: $active-category-color;
       cursor: pointer;
       text-decoration: none;
+    }
+  }
+
+  .app-name {
+    .logo-wp {
+      text-align: center;
+      width: 100%;
+      display: block;
     }
   }
 

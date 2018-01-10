@@ -1,4 +1,9 @@
 <div class="nav-component">
+  <div class="app-name">
+    <a class="logo-wp" uiSref="dashboard" [uiParams]="{ category: 'animation', page: 1 }">
+      <img src="assets/images/vimeotest-logo.png" alt="Vimeo test app" width="230" height="60">
+    </a>
+  </div>
   <ul>
     <li *ngFor="let category of categoryList"
         uiSref="." [uiParams]="{ category: category.id, page: currentPage }" uiSrefActive="active" class="category-item">
