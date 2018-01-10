@@ -18,6 +18,23 @@ $nav-bar-width: 300px !default;
     margin-left: 0;
   }
 
+  .toogle-nav {
+    background: url('../../../../assets/images/vimeotest-assets.png') no-repeat 0 0;
+    cursor: pointer;
+    display: none;
+    height: 26px;
+    margin-left: 10px;
+    margin-top: -13px;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    width: 35px;
+
+    @media (max-width: $gt-sm-min-width){
+      display: inline-block;
+    }
+  }
+
   .search-wp {
     display: inline-block;
     margin-right: $nav-bar-width;
@@ -30,8 +47,8 @@ $nav-bar-width: 300px !default;
     }
 
     input[type=text]{
-      //background: url('../../../assets/images/vimeotest-assets.png') no-repeat 0 -26px;
-      //background-position: 165px -26px;
+      background: url('../../../../assets/images/vimeotest-assets.png') no-repeat 0 -26px;
+      background-position: 220px -26px;
       border: 1px solid $footer-bg-color;
       border-radius: 50px;
       color: #c3c3c3;

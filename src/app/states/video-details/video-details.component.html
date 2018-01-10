@@ -1,7 +1,37 @@
 <div>
-  <p>
-    video-details works!asdfasdf
-  </p>
-  <pre>{{video}}</pre>
+  <div class="video-detail-container">
+    <div class="video-view-wrapper">
+      <div class="video-container">
+        <div class="video">
+          <iframe [src]="videoUrl" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="video-data">
+      <label>{{video.plays}}</label>
+      <label>{{video.metadata.connections.likes.total}}</label>
+      <label>{{video.metadata.connections.pictures.total}}</label>
+      <label class="video-comments">{{video.metadata.connections.comments.total}}</label>
+    </div>
+    <div class="video-text">
+      <div class="title">
+        <div class="image">
+          <img *ngIf="!video.user.pictures.sizes[1].link" src="assets/images/vimeo-logo.png"
+               alt="User logo" width="75" height="75">
+          <img *ngIf="video.user.pictures.sizes[1].link"
+               src="{{video.user.pictures.sizes[1].link}}" alt="User logo">
+        </div>
+        <div class="video-name">
+          <p class="video-title"><b>{{video.name}}</b></p>
+          <p>of <B>{{video.user.name}}</B> since <span></span></p>
+        </div>
+      </div>
+
+      <div class="video-description">
+        <div>{{video.description}}</div>
+      </div>
+    </div>
+  </div>
 </div>
 

@@ -19,7 +19,8 @@ export class VideoResource {
         const videos: Video [] = [];
         response.data.forEach(dto => {
           dto.uri = dto.uri.split('/')[2];
-          videos.push(new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri));
+          videos.push(new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,
+            dto.user, dto.description));
         });
         return videos;
       });
@@ -28,8 +29,10 @@ export class VideoResource {
   getVideoDetails(category: string, video: string): Observable<Video> {
     return this.http.get(`
     ${this.apiConfig['apiBaseUrl']}categories/${category}/videos/${video}?access_token=${this.apiConfig['accessToken']}
-    `).map((response: any) => {
-        return response;
+    `).map((dto: any) => {
+      dto.uri = dto.uri.split('/')[2];
+      return new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,
+        dto.user, dto.description);
       });
   }
 }
