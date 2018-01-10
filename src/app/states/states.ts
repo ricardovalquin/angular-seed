@@ -3,4 +3,4 @@ import {state as DashboardRoute} from './dashboard/dashboard.route';
 import {state as UsersRoute} from './users/users.route';
 import {state as videoDetails} from './video-details/video-details.route';
 
-export const STATES = [DashboardRoute, UsersRoute, videoDetails];
+export const STATES = [AppRoute, DashboardRoute, UsersRoute, videoDetails];

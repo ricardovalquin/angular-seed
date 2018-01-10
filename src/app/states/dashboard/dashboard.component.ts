@@ -15,9 +15,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   @Input() public categories: Category[];
   @Input() public selectedCategory: Category;
   @Input() public categoryVideos: Video[];
-  public currentPage: number;
-  public totalVideos: number;
   private selectedCategorySubscriber: Subscription;
+  public currentPage: number;
 
   constructor(private categoryService: CategoryService, private transition: Transition,
               private stateService: StateService) {}
@@ -29,7 +28,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentPage = this.transition.params().page;
-    this.selectedCategorySubscriber = this.categoryService.selectedCategory.subscribe((category: Category) => {
+    this.selectedCategorySubscriber = this.categoryService.getSelectedCategory().subscribe((category: Category) => {
       this.selectedCategory = category;
     });
     this.categoryService.setSelectedCategory(this.selectedCategory);

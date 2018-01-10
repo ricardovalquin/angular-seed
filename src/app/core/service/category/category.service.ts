@@ -23,7 +23,7 @@ export class CategoryService {
     }
   }
 
-  get selectedCategory(): Subject<Category> {
+  getSelectedCategory(): Subject<Category> {
     return this._selectedCategory;
   }
 

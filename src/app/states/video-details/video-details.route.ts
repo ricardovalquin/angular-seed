@@ -3,9 +3,13 @@ import {VideoService} from '../../core/service/video/video.service';
 import {Transition} from '@uirouter/core/lib';
 
 export const state = {
-  name: 'details',
+  name: 'app.details',
   url: '/home/:categoryId/:videoId',
-  component: VideoDetailsComponent,
+  views: {
+    'content@': {
+      component: VideoDetailsComponent
+    }
+  },
   resolve: [
     {
       token: 'video',

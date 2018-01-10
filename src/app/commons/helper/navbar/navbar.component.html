@@ -6,7 +6,7 @@
   </div>
   <ul>
     <li *ngFor="let category of categoryList"
-        uiSref="." [uiParams]="{ category: category.id, page: currentPage }" uiSrefActive="active" class="category-item">
+        uiSref="app.dashboard" [uiParams]="{ category: category.id}" uiSrefActive="active" class="category-item">
       {{category.id}}
     </li>
   </ul>

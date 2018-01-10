@@ -1,12 +1,12 @@
 <div class="dashboard-component">
-  <app-search></app-search>
-  <app-navbar [categoryList]="categories" [currentPage]="currentPage"></app-navbar>
+  <!--<app-search></app-search>-->
+  <!--<app-navbar [categoryList]="categories" [currentPage]="currentPage"></app-navbar>-->
 
   <div class="main-content-block">
     <div class="video-wrapper">
       <div class="video-container">
         <div class="figure-wrapper" *ngFor="let video of categoryVideos"
-             uiSref="details" [uiParams]="{ categoryId: selectedCategory.id, videoId: video.id }">
+             uiSref="app.details" [uiParams]="{ categoryId: selectedCategory.id, videoId: video.id }">
           <figure class="animated zoomIn">
             <img ng-if="video.pictures.sizes[2].link" src="{{video.picture.link}}" alt="Video-img" width="300" height="170"/>
             <figcaption class="video-name">{{video.name}}.</figcaption>
