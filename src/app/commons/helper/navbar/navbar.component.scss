@@ -89,9 +89,11 @@ $active-category-color: #FFFFFF !default;
 
   .app-name {
     .logo-wp {
+      display: block;
+      margin-bottom: 10px;
       text-align: center;
       width: 100%;
-      display: block;
+
     }
   }
 
