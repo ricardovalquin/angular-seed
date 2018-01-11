@@ -7,7 +7,6 @@ import {VideoService} from '../../core/service/video/video.service';
 export const state = {
   name: 'app.dashboard',
   url: '/home/:category?page',
-  // component: DashboardComponent,
   views: {
     'content@': {
       component: DashboardComponent
@@ -30,9 +29,6 @@ export const state = {
       token: 'selectedCategory',
       deps: [CategoryService, Transition],
       resolveFn (categoryService: CategoryService, transition: Transition) {
-        // return categoryService.getSelectedCategory().toPromise().then(category => {
-        //   return category;
-        // });
         return categoryService.categoryList.toPromise().then(categories =>
           categories.find(category => category.id === transition.params().category));
       }
