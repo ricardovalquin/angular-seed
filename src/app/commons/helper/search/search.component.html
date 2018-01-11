@@ -1,6 +1,11 @@
 <div class="search-component">
   <div class="toogle-nav"></div>
   <div class="search-wp">
-    <input type="text" id="search" placeholder="search" [(ngModel)]="searchQuery"/>
+    <input
+      type="text"
+      id="search"
+      placeholder="search"
+      [(ngModel)]="searchQuery"
+      (keydown.enter)="search(searchQuery)"/>
   </div>
 </div>

@@ -37,7 +37,7 @@ export const state = {
       token: 'categoryVideos',
       deps: [VideoService, Transition, 'selectedCategory'],
       resolveFn: (videoService: VideoService, trans: Transition, selectedCategory: Category) => videoService
-        .getVideosByCategory(selectedCategory, trans.params().page)
+        .getVideoList(selectedCategory, undefined, trans.params().page)
         .toPromise().then(categoryVideos => {
           return categoryVideos;
         })

@@ -4,6 +4,7 @@ import {CategoryService} from '../../core/service/category/category.service';
 import {Video} from '../../core/model/video/video';
 import {Transition, StateService} from '@uirouter/angular/lib';
 import {Subscription} from 'rxjs/Subscription';
+import {VideoService} from '../../core/service/video/video.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public currentPage: number;
 
   constructor(private categoryService: CategoryService, private transition: Transition,
-              private stateService: StateService) {}
+              private stateService: StateService, private videoService: VideoService) {}
 
   public changePage(page: number): void {
     this.currentPage = page;
@@ -32,6 +33,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.selectedCategory = category;
     });
     this.categoryService.setSelectedCategory(this.selectedCategory);
+    this.videoService.getVideoList().subscribe((videos: Video[]) => {
+      this.categoryVideos = videos;
+    });
   }
 
   ngOnDestroy(): void {
