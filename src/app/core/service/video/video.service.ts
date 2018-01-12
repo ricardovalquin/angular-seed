@@ -1,32 +1,40 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Video} from '../../model/video/video';
 import {VideoResource} from '../../resource/video/video.resource';
 import {Category} from '../../model/category/category';
+import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class VideoService {
 
-  private _videoList: Observable<Video[]>;
+  private _videoList: BehaviorSubject<Video[]>;
+  private _totalVideos: Subject<number>;
 
-  constructor(private videoResource: VideoResource) {}
+  get totalVideos(): Subject<number> {
+    return this._totalVideos;
+  }
 
-  getVideoList(category?: Category, query?: string, page?: number): Observable<Video[]> {
-    if (category) {
-      this._videoList = this.videoResource.getVideosByCategory(category, page ? page : 1);
-    } else if (query) {
-      this._videoList = this.videoResource.searchVideos(query, page ? page : 1);
-    }
+  constructor(private videoResource: VideoResource) {
+    this._videoList = new BehaviorSubject([]);
+    this._totalVideos = new Subject();
+  }
+
+  get videoList(): Subject<Video[]> {
     return this._videoList;
   }
 
-  // getVideosByCategory(category: Category, page?: number): Observable<Video[]> {
-  //   return this.videoResource.getVideosByCategory(category, page ? page : 1);
-  // }
-  //
-  // searchVideos(query: string, page?: number): Observable<Video[]> {
-  //   return this.videoResource.searchVideos(query, page ? page : 1);
-  // }
+  updateVideoList(category?: Category, query?: string, page?: number) {
+    if (category) {
+      this.videoResource.getVideosByCategory(category, page ? page : 1).subscribe(videos => this._videoList.next(videos));
+    } else if (query) {
+      this.videoResource.searchVideos(query, page ? page : 1).subscribe(videos => this._videoList.next(videos));
+    }
+    this.videoResource.totalVideos.subscribe(total => {
+      this._totalVideos.next(total);
+    });
+  }
 
   getVideoDetails(categoryId: string, videoId: string): Observable<Video> {
     return this.videoResource.getVideoDetails(categoryId, videoId);

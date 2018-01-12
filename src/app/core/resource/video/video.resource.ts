@@ -4,18 +4,27 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Video} from '../../model/video/video';
 import {Category} from '../../model/category/category';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class VideoResource {
 
   private apiConfig = vimeoAPIConfig;
+  private _totalVideos: Subject<number>;
 
-  constructor(private http: HttpClient) {}
+  get totalVideos(): Subject<number> {
+    return this._totalVideos;
+  }
+
+  constructor(private http: HttpClient) {
+    this._totalVideos = new Subject();
+  }
 
   getVideosByCategory(category: Category, page: number): Observable<Video[]> {
     return this.http.get(`${this.apiConfig['apiBaseUrl']}categories/${category.id}/videos?page=
     ${page}&per_page=12&access_token=${this.apiConfig['accessToken']}`)
       .map((response: any) => {
+        this._totalVideos.next(response.total);
         const videos: Video[] = [];
         response.data.forEach(dto => {
           dto.uri = dto.uri.split('/')[2];
@@ -28,8 +37,9 @@ export class VideoResource {
 
   searchVideos(query: string, page: number): Observable<Video[]> {
     return this.http.get(`${this.apiConfig['apiBaseUrl']}videos/?page=
-    ${page}&per_page=12&query=${query}`)
+    ${page}&per_page=12&query=${query}&access_token=${this.apiConfig['accessToken']}`)
       .map((response: any) => {
+        this._totalVideos.next(response.total);
         const videos: Video[] = [];
         response.data.forEach(dto => {
           dto.uri = dto.uri.split('/')[2];

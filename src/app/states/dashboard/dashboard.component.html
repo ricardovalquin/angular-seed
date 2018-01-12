@@ -13,10 +13,11 @@
       <div class="paginator">
         <div class="pagination-container">
           <ngb-pagination
-            [collectionSize]="70"
+            [collectionSize]="totalVideos"
+            [maxSize]="5"
+            [rotate]="true"
             [(page)]="currentPage"
             (pageChange)="changePage($event)"
-            [directionLinks]="false"
             size="sm"
             class="pagination-sm">
           </ngb-pagination>

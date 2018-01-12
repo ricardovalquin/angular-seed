@@ -5,8 +5,8 @@
     </a>
   </div>
   <ul>
-    <li *ngFor="let category of categoryList"
-        uiSref="app.dashboard" [uiParams]="{ category: category.id}" uiSrefActive="active" class="category-item">
+    <li *ngFor="let category of categoryList" (click)="selectCategory(category)"
+    uiSref="app.dashboard" [uiParams]="{ category: category.id, page: 1}" uiSrefActive="active" class="category-item">
       {{category.id}}
     </li>
   </ul>

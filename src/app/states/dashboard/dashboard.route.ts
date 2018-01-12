@@ -13,18 +13,16 @@ export const state = {
     }
   },
   params: {
-    category: 'animation',
-    page: '1'
-  }, resolve: [
-    {
-      token: 'categories',
-      deps: [CategoryService],
-      resolveFn: (catService: CategoryService) => catService.categoryList
-        .toPromise().then(categories => {
-          catService.setSelectedCategory(categories[0]);
-          return categories;
-        })
+    category: {
+      value: 'animation',
+      dynamic: true
     },
+    page: {
+      value: '1',
+      dynamic: true
+    }
+  },
+  resolve: [
     {
       token: 'selectedCategory',
       deps: [CategoryService, Transition],
@@ -32,15 +30,6 @@ export const state = {
         return categoryService.categoryList.toPromise().then(categories =>
           categories.find(category => category.id === transition.params().category));
       }
-    },
-    {
-      token: 'categoryVideos',
-      deps: [VideoService, Transition, 'selectedCategory'],
-      resolveFn: (videoService: VideoService, trans: Transition, selectedCategory: Category) => videoService
-        .getVideoList(selectedCategory, undefined, trans.params().page)
-        .toPromise().then(categoryVideos => {
-          return categoryVideos;
-        })
     }
   ]
 };

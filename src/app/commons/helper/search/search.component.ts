@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
 
   search(query: string): void {
-    this.videoService.getVideoList(undefined, query);
+    this.videoService.updateVideoList(undefined, query);
   }
 
 }
