@@ -21,10 +21,11 @@ export class SearchVideosComponent implements OnInit, OnDestroy {
   public changePage(page: number): void {
     this.currentPage = page;
     this.videoService.updateVideoList(undefined, this.searchTerm, page);
-    // this.stateService.go('.', {category: this.selectedCategory.id, page: page});
+    this.stateService.go('.', {term: this.searchTerm, page: page});
   }
 
-  constructor(private videoService: VideoService, private transition: Transition) { }
+  constructor(private videoService: VideoService, private transition: Transition,
+              private stateService: StateService) {}
 
   ngOnInit() {
     this.totalVideos = 0;
