@@ -12,14 +12,20 @@ export class VideoService {
 
   private _videoList: BehaviorSubject<Video[]>;
   private _totalVideos: Subject<number>;
+  private _totalComments: Subject<number>;
 
   get totalVideos(): Subject<number> {
     return this._totalVideos;
   }
 
+  get totalComments(): Subject<number> {
+    return this._totalComments;
+  }
+
   constructor(private videoResource: VideoResource) {
     this._videoList = new BehaviorSubject([]);
     this._totalVideos = new Subject();
+    this._totalComments = new Subject();
   }
 
   get videoList(): Subject<Video[]> {
@@ -41,7 +47,12 @@ export class VideoService {
     return this.videoResource.getVideoDetails(videoId);
   }
 
-  getVideoComments(videoId: string): Observable<Comment[]> {
-    return this.videoResource.getVideoComments(videoId);
+  getVideoComments(videoId: string, page: number): Observable<Comment[]> {
+    this.updateTotalComments();
+    return this.videoResource.getVideoComments(videoId, page);
+  }
+
+  updateTotalComments(): void {
+    this.videoResource.totalComments.subscribe(totalComments => this._totalComments.next(totalComments));
   }
 }

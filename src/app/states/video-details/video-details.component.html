@@ -43,6 +43,20 @@
             <p>{{comment.text}}</p>
           </div>
         </div>
+
+        <div class="paginator">
+          <div class="pagination-container">
+            <ngb-pagination
+              [collectionSize]="totalComments"
+              [maxSize]="5"
+              [rotate]="true"
+              [(page)]="currentPage"
+              (pageChange)="changePage($event)"
+              size="sm"
+              class="pagination-sm">
+            </ngb-pagination>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -14,7 +14,7 @@ import {CategoryService} from '../../core/service/category/category.service';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   @Input() public selectedCategory: Category;
-  @Input() public totalVideos: number;
+  public totalVideos: number;
   public categoryVideos: Video[];
   public currentPage: number;
   private selectedCategorySubscriber: Subscription;
@@ -35,8 +35,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.videoListSubscriber = this.videoService.videoList.subscribe((videos: Video[]) => {
       this.categoryVideos = videos;
     });
-    this.videoService.totalVideos.subscribe(videos => {
-      this.totalVideos = videos;
+    this.videoService.totalVideos.subscribe(totalVideos => {
+      this.totalVideos = totalVideos;
     });
     this.selectedCategorySubscriber = this.categoryService.getSelectedCategory()
       .subscribe((category: Category) => {

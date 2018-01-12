@@ -12,13 +12,19 @@ export class VideoResource {
 
   private apiConfig = vimeoAPIConfig;
   private _totalVideos: Subject<number>;
+  private _totalComments: Subject<number>;
 
   get totalVideos(): Subject<number> {
     return this._totalVideos;
   }
 
+  get totalComments(): Subject<number> {
+    return this._totalComments;
+  }
+
   constructor(private http: HttpClient) {
     this._totalVideos = new Subject();
+    this._totalComments = new Subject();
   }
 
   getVideosByCategory(category: Category, page: number): Observable<Video[]> {
@@ -61,9 +67,11 @@ export class VideoResource {
       });
   }
 
-  getVideoComments(videoId: string): Observable<Comment[]> {
+  getVideoComments(videoId: string, page: number): Observable<Comment[]> {
     return this.http.get(`
-    ${this.apiConfig['apiBaseUrl']}videos/${videoId}/comments?access_token=${this.apiConfig['accessToken']}`).map((response: any) => {
+    ${this.apiConfig['apiBaseUrl']}videos/${videoId}/comments?page=
+    ${page}&per_page=8&access_token=${this.apiConfig['accessToken']}`).map((response: any) => {
+      this._totalComments.next(response.total);
       const videoComments: Comment[] = [];
       response.data.forEach(dto => {
         videoComments.push(new Comment(dto.created_on, dto.text, dto.user));

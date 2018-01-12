@@ -16,7 +16,7 @@ export const state = {
       deps: [VideoService, Transition],
       resolveFn: (videoService: VideoService, trans: Transition) =>
         videoService.getVideoDetails(trans.params().videoId)
-        .toPromise().then(video => {
+          .toPromise().then(video => {
           return video;
         })
     },
@@ -24,8 +24,8 @@ export const state = {
       token: 'videoComments',
       deps: [VideoService, Transition],
       resolveFn: (videoService: VideoService, transition: Transition) =>
-      videoService.getVideoComments(transition.params().videoId)
-        .toPromise().then(videoComments => videoComments)
+        videoService.getVideoComments(transition.params().videoId, 1)
+          .toPromise().then(videoComments => videoComments)
     }
   ]
 };
