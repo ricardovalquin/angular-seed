@@ -23,6 +23,8 @@ import { SearchComponent } from './commons/helper/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { SearchVideosComponent } from './states/search-videos/search-videos.component';
 import {CommonService} from './core/service/common/common.service';
+import { LoginComponent } from './states/login/login.component';
+import { RegisterComponent } from './states/register/register.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {CommonService} from './core/service/common/common.service';
     NavbarComponent,
     VideoDetailsComponent,
     SearchComponent,
-    SearchVideosComponent
+    SearchVideosComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import {CommonService} from './core/service/common/common.service';
       states: STATES,
       useHash: false,
       config: uiRouterConfigFn,
-      otherwise: '/home/animation?page=1'
+      otherwise: '/login'
     }),
     CoreModule,
     FormsModule,
