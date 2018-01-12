@@ -8,8 +8,6 @@ import {Category} from './core/model/category/category';
 })
 export class AppComponent implements OnInit {
 
-  @Input() categories: Category[];
-
   constructor() {}
 
   ngOnInit() {}
