@@ -4,7 +4,7 @@ import {Transition} from '@uirouter/core/lib';
 
 export const state = {
   name: 'app.details',
-  url: '/home/:categoryId/:videoId',
+  url: '/home/video/:videoId',
   views: {
     'content@': {
       component: VideoDetailsComponent
@@ -15,7 +15,7 @@ export const state = {
       token: 'video',
       deps: [VideoService, Transition],
       resolveFn: (videoService: VideoService, trans: Transition) =>
-        videoService.getVideoDetails(trans.params().categoryId, trans.params().videoId)
+        videoService.getVideoDetails(trans.params().videoId)
         .toPromise().then(video => {
           return video;
         })

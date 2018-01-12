@@ -50,9 +50,9 @@ export class VideoResource {
       });
   }
 
-  getVideoDetails(category: string, video: string): Observable<Video> {
+  getVideoDetails(video: string): Observable<Video> {
     return this.http.get(`
-    ${this.apiConfig['apiBaseUrl']}categories/${category}/videos/${video}?access_token=${this.apiConfig['accessToken']}
+    ${this.apiConfig['apiBaseUrl']}videos/${video}?access_token=${this.apiConfig['accessToken']}
     `).map((dto: any) => {
       dto.uri = dto.uri.split('/')[2];
       return new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,

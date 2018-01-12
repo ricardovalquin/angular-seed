@@ -36,7 +36,7 @@ export class VideoService {
     });
   }
 
-  getVideoDetails(categoryId: string, videoId: string): Observable<Video> {
-    return this.videoResource.getVideoDetails(categoryId, videoId);
+  getVideoDetails(videoId: string): Observable<Video> {
+    return this.videoResource.getVideoDetails(videoId);
   }
 }

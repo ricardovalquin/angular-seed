@@ -19,6 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { VideoDetailsComponent } from './states/video-details/video-details.component';
 import { SearchComponent } from './commons/helper/search/search.component';
 import { FormsModule } from '@angular/forms';
+import { SearchVideosComponent } from './states/search-videos/search-videos.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     NavbarComponent,
     VideoDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    SearchVideosComponent
   ],
   imports: [
     BrowserModule,
