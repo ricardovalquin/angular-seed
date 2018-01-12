@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {UIRouterModule} from '@uirouter/angular';
+import { MomentModule } from 'angular2-moment';
+
 
 import {uiRouterConfigFn} from './config/router.config';
 
@@ -43,7 +45,8 @@ import {CommonService} from './core/service/common/common.service';
       otherwise: '/home/animation?page=1'
     }),
     CoreModule,
-    FormsModule
+    FormsModule,
+    MomentModule
   ],
   providers: [
     CategoryResource,

@@ -186,5 +186,29 @@ $title-color: #635492 !default;
       width: 100%;
     }
   }
+
+  .comments-wp {
+    .comment {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #879cab;
+      .user-img-wp {
+        display: inline-block;
+        margin-top: 5px;
+        vertical-align: top;
+        width: 60px;
+        .user-img {
+          border-radius: 50%;
+          height: 50px;
+          width: 50px;
+        }
+      }
+
+      .user-comment-wp {
+        width: calc(100% - 80px);
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
 }
 

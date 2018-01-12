@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Video} from '../../core/model/video/video';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {Comment} from '../../core/model/comment/comment';
 
 @Component({
   selector: 'app-video-details',
@@ -10,6 +11,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class VideoDetailsComponent implements OnInit {
 
   @Input() public video: Video;
+  @Input() public videoComments: Comment[];
   public videoUrl: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) { }

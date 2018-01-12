@@ -1,5 +1,6 @@
 export class Video {
   id: string;
+  createdOn: string;
   description: string;
   link: string;
   metadata: object;
@@ -10,8 +11,9 @@ export class Video {
   user: object;
 
   constructor(link: string, name: string, picture: string, uri: string, plays: number, metadata: object, user: object,
-              description: string) {
+              description: string, createdOn: string) {
     this.id = uri;
+    this.createdOn = createdOn;
     this.description = description;
     this.link = link;
     this.metadata = metadata;

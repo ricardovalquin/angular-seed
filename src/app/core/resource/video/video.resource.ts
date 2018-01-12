@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {Video} from '../../model/video/video';
 import {Category} from '../../model/category/category';
 import {Subject} from 'rxjs/Subject';
+import {Comment} from '../../model/comment/comment';
 
 @Injectable()
 export class VideoResource {
@@ -29,7 +30,7 @@ export class VideoResource {
         response.data.forEach(dto => {
           dto.uri = dto.uri.split('/')[2];
           videos.push(new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,
-            dto.user, dto.description));
+            dto.user, dto.description, dto.created_time));
         });
         return videos;
       });
@@ -44,19 +45,30 @@ export class VideoResource {
         response.data.forEach(dto => {
           dto.uri = dto.uri.split('/')[2];
           videos.push(new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,
-            dto.user, dto.description));
+            dto.user, dto.description, dto.created_time));
         });
         return videos;
       });
   }
 
-  getVideoDetails(video: string): Observable<Video> {
+  getVideoDetails(videoId: string): Observable<Video> {
     return this.http.get(`
-    ${this.apiConfig['apiBaseUrl']}videos/${video}?access_token=${this.apiConfig['accessToken']}
+    ${this.apiConfig['apiBaseUrl']}videos/${videoId}?access_token=${this.apiConfig['accessToken']}
     `).map((dto: any) => {
       dto.uri = dto.uri.split('/')[2];
       return new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,
-        dto.user, dto.description);
+        dto.user, dto.description, dto.created_time);
       });
+  }
+
+  getVideoComments(videoId: string): Observable<Comment[]> {
+    return this.http.get(`
+    ${this.apiConfig['apiBaseUrl']}videos/${videoId}/comments?access_token=${this.apiConfig['accessToken']}`).map((response: any) => {
+      const videoComments: Comment[] = [];
+      response.data.forEach(dto => {
+        videoComments.push(new Comment(dto.created_on, dto.text, dto.user));
+      });
+      return videoComments;
+    });
   }
 }

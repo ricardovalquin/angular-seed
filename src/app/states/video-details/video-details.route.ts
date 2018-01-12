@@ -19,6 +19,13 @@ export const state = {
         .toPromise().then(video => {
           return video;
         })
+    },
+    {
+      token: 'videoComments',
+      deps: [VideoService, Transition],
+      resolveFn: (videoService: VideoService, transition: Transition) =>
+      videoService.getVideoComments(transition.params().videoId)
+        .toPromise().then(videoComments => videoComments)
     }
   ]
 };

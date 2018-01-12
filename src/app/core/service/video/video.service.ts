@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Video} from '../../model/video/video';
 import {VideoResource} from '../../resource/video/video.resource';
 import {Category} from '../../model/category/category';
+import {Comment} from '../../model/comment/comment';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
@@ -38,5 +39,9 @@ export class VideoService {
 
   getVideoDetails(videoId: string): Observable<Video> {
     return this.videoResource.getVideoDetails(videoId);
+  }
+
+  getVideoComments(videoId: string): Observable<Comment[]> {
+    return this.videoResource.getVideoComments(videoId);
   }
 }
