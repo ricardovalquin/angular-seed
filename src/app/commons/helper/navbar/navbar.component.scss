@@ -33,6 +33,7 @@ $active-category-color: #FFFFFF !default;
   ul {
     padding-left: 5px;
   }
+
   .category-item {
     color: $inactive-category-color;
     cursor: pointer;
@@ -94,6 +95,27 @@ $active-category-color: #FFFFFF !default;
       text-align: center;
       width: 100%;
 
+    }
+  }
+
+  .logout-wp {
+    margin: 30px 25px;
+    text-align: center;
+
+    .logout-btn {
+      background-color: #FFFFFF;
+      border: 1px solid #635492;
+      color: #635492;
+      font-weight: bold;
+      outline: none;
+      width: 150px;
+
+      &:hover {
+        cursor: pointer;
+        border: 1px solid #FFFFFF;
+        color: #FFFFFF;
+        background-color: #635492;
+      }
     }
   }
 

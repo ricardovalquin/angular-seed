@@ -4,6 +4,7 @@ import {Category} from '../../../core/model/category/category';
 import {CategoryService} from '../../../core/service/category/category.service';
 import {VideoService} from '../../../core/service/video/video.service';
 import {CommonService} from '../../../core/service/common/common.service';
+import {AuthenticationService} from '../../../core/service/authentication/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,8 @@ export class NavbarComponent implements OnInit {
   public navBarState: boolean;
 
   constructor(private categoryService: CategoryService, private videoService: VideoService,
-              private commonService: CommonService, private transition: Transition) {
+              private commonService: CommonService, private transition: Transition,
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -38,6 +40,10 @@ export class NavbarComponent implements OnInit {
 
   closeNav(): void {
     this.commonService.switchNavBarState(false);
+  }
+
+  logOut(): void {
+    this.authenticationService.logout();
   }
 
 }

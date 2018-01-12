@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {UIRouterModule} from '@uirouter/angular';
 import { MomentModule } from 'angular2-moment';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {uiRouterConfigFn} from './config/router.config';
 
@@ -12,7 +12,6 @@ import { DashboardComponent } from './states/dashboard/dashboard.component';
 import { UsersComponent } from './states/users/users.component';
 import { CoreModule } from './core/core.module';
 import {CategoryResource} from './core/resource/category/category.resource';
-import {HttpClientModule} from '@angular/common/http';
 import {CategoryService} from './core/service/category/category.service';
 import { NavbarComponent } from './commons/helper/navbar/navbar.component';
 import {VideoResource} from './core/resource/video/video.resource';
@@ -25,6 +24,12 @@ import { SearchVideosComponent } from './states/search-videos/search-videos.comp
 import {CommonService} from './core/service/common/common.service';
 import { LoginComponent } from './states/login/login.component';
 import { RegisterComponent } from './states/register/register.component';
+import {AuthenticationService} from './core/service/authentication/authentication.service';
+
+import { fakeBackendProvider } from './commons/helper/http-interceptor/http-interceptor';
+import { AuthGuardService } from './core/service/guard/auth-guard.service';
+import { JwtInterceptor } from './commons/helper/jwt-interceptor/jwt-interceptor';
+import {UserService} from './core/service/user/user.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +62,18 @@ import { RegisterComponent } from './states/register/register.component';
     CategoryService,
     VideoResource,
     VideoService,
-    CommonService
+    CommonService,
+    AuthGuardService,
+    AuthenticationService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
