@@ -99,3 +99,8 @@ $active-category-color: #FFFFFF !default;
 
 }
 
+.open-nav {
+  display: block;
+  width: $nav-bar-width;
+  z-index: 2;
+}

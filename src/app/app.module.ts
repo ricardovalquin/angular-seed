@@ -20,6 +20,7 @@ import { VideoDetailsComponent } from './states/video-details/video-details.comp
 import { SearchComponent } from './commons/helper/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { SearchVideosComponent } from './states/search-videos/search-videos.component';
+import {CommonService} from './core/service/common/common.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SearchVideosComponent } from './states/search-videos/search-videos.comp
     CategoryResource,
     CategoryService,
     VideoResource,
-    VideoService
+    VideoService,
+    CommonService
   ],
   bootstrap: [AppComponent]
 })
