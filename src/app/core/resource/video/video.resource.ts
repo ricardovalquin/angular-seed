@@ -28,8 +28,7 @@ export class VideoResource {
   }
 
   getVideosByCategory(category: Category, page: number): Observable<Video[]> {
-    return this.http.get(`${this.apiConfig['apiBaseUrl']}categories/${category.id}/videos?page=
-    ${page}&per_page=12&access_token=${this.apiConfig['accessToken']}`)
+    return this.http.get(`${this.apiConfig['apiBaseUrl']}categories/${category.id}/videos?page=${page}&per_page=12`)
       .map((response: any) => {
         this._totalVideos.next(response.total);
         const videos: Video[] = [];
@@ -43,8 +42,7 @@ export class VideoResource {
   }
 
   searchVideos(query: string, page: number): Observable<Video[]> {
-    return this.http.get(`${this.apiConfig['apiBaseUrl']}videos/?page=
-    ${page}&per_page=12&query=${query}&access_token=${this.apiConfig['accessToken']}`)
+    return this.http.get(`${this.apiConfig['apiBaseUrl']}videos/?page=${page}&per_page=12&query=${query}`)
       .map((response: any) => {
         this._totalVideos.next(response.total);
         const videos: Video[] = [];
@@ -59,8 +57,7 @@ export class VideoResource {
 
   getVideoDetails(videoId: string): Observable<Video> {
     return this.http.get(`
-    ${this.apiConfig['apiBaseUrl']}videos/${videoId}?access_token=${this.apiConfig['accessToken']}
-    `).map((dto: any) => {
+    ${this.apiConfig['apiBaseUrl']}videos/${videoId}`).map((dto: any) => {
       dto.uri = dto.uri.split('/')[2];
       return new Video(dto.link, dto.name, dto.pictures.sizes[1], dto.uri, dto.stats.plays, dto.metadata,
         dto.user, dto.description, dto.created_time);
@@ -69,8 +66,7 @@ export class VideoResource {
 
   getVideoComments(videoId: string, page: number): Observable<Comment[]> {
     return this.http.get(`
-    ${this.apiConfig['apiBaseUrl']}videos/${videoId}/comments?page=
-    ${page}&per_page=8&access_token=${this.apiConfig['accessToken']}`).map((response: any) => {
+    ${this.apiConfig['apiBaseUrl']}videos/${videoId}/comments?page=${page}&per_page=8`).map((response: any) => {
       this._totalComments.next(response.total);
       const videoComments: Comment[] = [];
       response.data.forEach(dto => {

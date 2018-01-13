@@ -15,7 +15,7 @@ export class CategoryResource {
   constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get(`${this.apiConfig['apiBaseUrl']}categories?access_token=${this.apiConfig['accessToken']}`)
+    return this.http.get(`${this.apiConfig['apiBaseUrl']}categories`)
       .map(response => {
         return response['data'];
       })
