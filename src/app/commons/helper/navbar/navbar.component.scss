@@ -1,13 +1,4 @@
-$gt-sm-min-width: 960px !default;
-
-// General variables
-$nav-bar-width: 300px !default;
-
-//navbar
-$inactive-category-color: #aba4c1 !default;
-$hover-category-color: rgba(111,96,161,1) !default;
-$active-category-color: #FFFFFF !default;
-
+@import "../../../common-styles";
 
 .nav-component {
   height: 100%;
@@ -103,18 +94,18 @@ $active-category-color: #FFFFFF !default;
     text-align: center;
 
     .logout-btn {
-      background-color: #FFFFFF;
-      border: 1px solid #635492;
-      color: #635492;
+      background-color: $white;
+      border: 1px solid $default-color;
+      color: $default-color;
       font-weight: bold;
       outline: none;
       width: 150px;
 
       &:hover {
         cursor: pointer;
-        border: 1px solid #FFFFFF;
-        color: #FFFFFF;
-        background-color: #635492;
+        border: 1px solid $white;
+        color: $white;
+        background-color: $default-color;
       }
     }
   }

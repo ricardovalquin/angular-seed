@@ -1,8 +1,6 @@
 import {DashboardComponent} from './dashboard.component';
 import {CategoryService} from '../../core/service/category/category.service';
-import {Category} from '../../core/model/category/category';
 import {Transition} from '@uirouter/core/lib';
-import {VideoService} from '../../core/service/video/video.service';
 
 export const state = {
   name: 'app.dashboard',
@@ -11,6 +9,9 @@ export const state = {
     'content@': {
       component: DashboardComponent
     }
+  },
+  data: {
+    authorization: 'logged'
   },
   params: {
     category: {

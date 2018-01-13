@@ -1,0 +1,15 @@
+@import "../login/login.component";
+
+.register-container {
+  margin-top: 50px !important;
+  width: 320px;
+
+  .login-form {
+    .form-group {
+      .form-group-label {
+        color: $white;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,82 @@
+@import "../../common-styles";
+
+.login-wp {
+  video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
+  }
+  .stopfade {
+    opacity: .5;
+  }
+
+  .login-form-parent-container {
+    background-color: rgba(37, 36, 36, 0.38);
+    border-radius: 50px 0;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .login-form-container {
+    @extend .login-form-parent-container;
+    //background-color: rgba(37, 36, 36, 0.38);
+    //border-radius: 50px 0;
+    //margin: 0 auto;
+    margin-top: 150px;
+    //padding: 20px;
+    //text-align: center;
+    width: 300px;
+
+    .vimeo-logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .login-form {
+      margin-top: 40px;
+
+      .form-group-label {
+        font-size: 20px;
+        color: $white;
+      }
+
+      .help-block {
+        color: $white;
+      }
+
+      .register-wp {
+        color: $white;
+      }
+    }
+
+    .login-btn {
+      background-color: $white;
+      border: 1px solid $default-color;
+      color: $default-color;
+      font-weight: bold;
+      outline: none;
+      width: 80px;
+
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $white;
+        color: $white;
+        background-color: $default-color;
+      }
+    }
+
+    .btn-link {
+      color: $white;
+      font-weight: bold;
+    }
+  }
+}
