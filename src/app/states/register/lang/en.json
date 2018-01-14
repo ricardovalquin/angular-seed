@@ -1,0 +1,14 @@
+{
+  "REGISTER": {
+    "FIRST_NAME": "First name",
+    "FIRST_NAME_REQUIRED": "First name is required",
+    "LAST_NAME": "Last name",
+    "LAST_NAME_REQUIRED": "Last name is required",
+    "USERNAME": "Username",
+    "USERNAME_REQUIRED": "Username is required",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIRED": "Password is required",
+    "REGISTER": "Register",
+    "CANCEL": "Cancel"
+  }
+}

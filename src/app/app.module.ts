@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {UIRouterModule} from '@uirouter/angular';
 import { MomentModule } from 'angular2-moment';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 
 import {uiRouterConfigFn} from './config/router.config';
 
@@ -30,6 +30,9 @@ import { fakeBackendProvider } from './commons/helper/http-interceptor/http-inte
 import { AuthGuardService } from './core/service/guard/auth-guard.service';
 import { JwtInterceptor } from './commons/helper/jwt-interceptor/jwt-interceptor';
 import {UserService} from './core/service/user/user.service';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpLoaderFactory} from './config/http-translate-loader';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,14 @@ import {UserService} from './core/service/user/user.service';
     }),
     CoreModule,
     FormsModule,
-    MomentModule
+    MomentModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     CategoryResource,

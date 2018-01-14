@@ -10,9 +10,9 @@
     </div>
     <div class="video-data">
       <label>{{video.plays}}</label>
-      <label>{{video.metadata.connections.likes.total}}</label>
-      <label>{{video.metadata.connections.pictures.total}}</label>
-      <label class="video-comments">{{video.metadata.connections.comments.total}}</label>
+      <label>{{video.metadata.connections.likes.total | number}}</label>
+      <label>{{video.metadata.connections.pictures.total | number}}</label>
+      <label class="video-comments">{{video.metadata.connections.comments.total | number}}</label>
     </div>
     <div class="video-text">
       <div class="title">
@@ -24,7 +24,7 @@
         </div>
         <div class="video-name">
           <p class="video-title"><b>{{video.name}}</b></p>
-          <p>of <B>{{video.user.name}}</B> since {{video.createdOn | amTimeAgo}}<span></span></p>
+          <p>{{'VIDEO_DETAILS.OF' | translate}} <B>{{video.user.name}}</B> {{'VIDEO_DETAILS.SINCE' | translate}} {{video.createdOn | amTimeAgo}}<span></span></p>
         </div>
       </div>
 
@@ -39,7 +39,7 @@
             <img *ngIf="comment.user.pictures" src={{comment.user.pictures.sizes[1].link}} alt="User" class="user-img">
           </div>
           <div class="user-comment-wp">
-            <p>By: <b>{{comment.user.name}}</b> {{comment.createdOn | amTimeAgo}}:</p>
+            <p>{{'VIDEO_DETAILS.BY' | translate}}: <b>{{comment.user.name}}</b> {{comment.createdOn | amTimeAgo}}:</p>
             <p>{{comment.text}}</p>
           </div>
         </div>

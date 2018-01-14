@@ -1,0 +1,9 @@
+{
+  "LOGIN": {
+    "USERNAME_REQUIRED": "Username is required",
+    "PASSWORD_REQUIRED": "Password is required",
+    "LOGIN": "Login",
+    "DONT_HAVE_ACCOUNT": "Without an account?",
+    "REGISTER": "Register"
+  }
+}

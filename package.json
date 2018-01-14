@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.9",
+    "@ngx-translate/core": "^9.0.2",
+    "@ngx-translate/http-loader": "^2.0.1",
     "@uirouter/angular": "^1.0.0-rc.0",
     "angular2-moment": "^1.7.1",
     "bootstrap": "4.0.0-beta.2",
