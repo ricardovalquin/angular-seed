@@ -23,7 +23,6 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('currentUser');
     this.stateService.go('login');
-
   }
 
 }

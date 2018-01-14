@@ -16,11 +16,8 @@ export class CategoryResource {
 
   getCategories(): Observable<Category[]> {
     return this.http.get(`${this.apiConfig['apiBaseUrl']}categories`)
-      .map(response => {
-        return response['data'];
-      })
-      .map(categories => {
-        return categories.map(category => {
+      .map((categories: any) => {
+        return categories.data.map(category => {
           const uri = category.uri.split('/');
           category['id'] = uri[2];
           return category;
