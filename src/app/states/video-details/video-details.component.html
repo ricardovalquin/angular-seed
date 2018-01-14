@@ -1,64 +1,62 @@
-<div>
-  <div class="video-detail-container">
-    <div class="video-view-wrapper">
-      <div class="video-container">
-        <div class="video">
-          <iframe [src]="videoUrl" frameborder="0" webkitallowfullscreen mozallowfullscreen
-                  allowfullscreen></iframe>
-        </div>
+<div class="video-detail-container">
+  <div class="video-view-wrapper">
+    <div class="video-container">
+      <div class="video">
+        <iframe [src]="videoUrl" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                allowfullscreen></iframe>
       </div>
     </div>
-    <div class="video-data">
-      <label>{{video.plays}}</label>
-      <label>{{video.metadata.connections.likes.total | number}}</label>
-      <label>{{video.metadata.connections.pictures.total | number}}</label>
-      <label class="video-comments">{{video.metadata.connections.comments.total | number}}</label>
+  </div>
+  <div class="video-data">
+    <label>{{video.plays}}</label>
+    <label>{{video.metadata.connections.likes.total | number}}</label>
+    <label>{{video.metadata.connections.pictures.total | number}}</label>
+    <label class="video-comments">{{video.metadata.connections.comments.total | number}}</label>
+  </div>
+  <div class="video-text">
+    <div class="title">
+      <div class="image">
+        <img *ngIf="!video.user.pictures.sizes[1].link" src="assets/images/vimeo-logo.png"
+             alt="User logo" width="75" height="75">
+        <img *ngIf="video.user.pictures.sizes[1].link"
+             src="{{video.user.pictures.sizes[1].link}}" alt="User logo">
+      </div>
+      <div class="video-name">
+        <p class="video-title"><b>{{video.name}}</b></p>
+        <p>{{'VIDEO_DETAILS.OF' | translate}} <B>{{video.user.name}}</B> {{'VIDEO_DETAILS.SINCE' | translate}}
+          {{video.createdOn | amTimeAgo}}<span></span></p>
+      </div>
     </div>
-    <div class="video-text">
-      <div class="title">
-        <div class="image">
-          <img *ngIf="!video.user.pictures.sizes[1].link" src="assets/images/vimeo-logo.png"
-               alt="User logo" width="75" height="75">
-          <img *ngIf="video.user.pictures.sizes[1].link"
-               src="{{video.user.pictures.sizes[1].link}}" alt="User logo">
+
+    <div class="video-description">
+      <div>{{video.description}}</div>
+    </div>
+
+    <div class="comments-wp">
+      <div class="comment" *ngFor="let comment of videoComments">
+        <div class="user-img-wp">
+          <img *ngIf="!comment.user.pictures" src="assets/images/vimeo-logo.png" alt="User" class="user-img">
+          <img *ngIf="comment.user.pictures" src={{comment.user.pictures.sizes[1].link}} alt="User" class="user-img">
         </div>
-        <div class="video-name">
-          <p class="video-title"><b>{{video.name}}</b></p>
-          <p>{{'VIDEO_DETAILS.OF' | translate}} <B>{{video.user.name}}</B> {{'VIDEO_DETAILS.SINCE' | translate}} {{video.createdOn | amTimeAgo}}<span></span></p>
+        <div class="user-comment-wp">
+          <p>{{'VIDEO_DETAILS.BY' | translate}}: <b>{{comment.user.name}}</b> {{comment.createdOn | amTimeAgo}}:</p>
+          <p>{{comment.text}}</p>
         </div>
       </div>
 
-      <div class="video-description">
-        <div>{{video.description}}</div>
-      </div>
-
-      <div class="comments-wp">
-        <div class="comment" *ngFor="let comment of videoComments">
-          <div class="user-img-wp">
-            <img *ngIf="!comment.user.pictures" src="assets/images/vimeo-logo.png" alt="User" class="user-img">
-            <img *ngIf="comment.user.pictures" src={{comment.user.pictures.sizes[1].link}} alt="User" class="user-img">
-          </div>
-          <div class="user-comment-wp">
-            <p>{{'VIDEO_DETAILS.BY' | translate}}: <b>{{comment.user.name}}</b> {{comment.createdOn | amTimeAgo}}:</p>
-            <p>{{comment.text}}</p>
-          </div>
-        </div>
-
-        <div class="paginator">
-          <div class="pagination-container">
-            <ngb-pagination
-              [collectionSize]="totalComments"
-              [maxSize]="5"
-              [rotate]="true"
-              [(page)]="currentPage"
-              (pageChange)="changePage($event)"
-              size="sm"
-              class="pagination-sm">
-            </ngb-pagination>
-          </div>
+      <div class="paginator">
+        <div class="pagination-container">
+          <ngb-pagination
+            [collectionSize]="totalComments"
+            [maxSize]="5"
+            [rotate]="true"
+            [(page)]="currentPage"
+            (pageChange)="changePage($event)"
+            size="sm"
+            class="pagination-sm">
+          </ngb-pagination>
         </div>
       </div>
     </div>
   </div>
 </div>
-

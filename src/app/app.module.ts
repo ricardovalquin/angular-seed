@@ -33,6 +33,8 @@ import {UserService} from './core/service/user/user.service';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpLoaderFactory} from './config/http-translate-loader';
+import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +61,14 @@ import {HttpLoaderFactory} from './config/http-translate-loader';
     CoreModule,
     FormsModule,
     MomentModule,
+    LoadingModule.forRoot({
+      animationType: ANIMATION_TYPES.wanderingCubes,
+      backdropBackgroundColour: 'rgba(0,0,0,0.5)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff'
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

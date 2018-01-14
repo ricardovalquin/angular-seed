@@ -23,12 +23,16 @@ export class VideoDetailsComponent implements OnInit {
     this.currentPage = 1;
     this.totalComments = 40;
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.url);
-    this.videoService.totalComments.subscribe(totalComments => this.totalComments = totalComments);
+    this.videoService.totalComments.subscribe(totalComments => {
+      this.totalComments = totalComments;
+    });
   }
 
   public changePage(page: number): void {
     this.currentPage = page;
-    this.videoService.getVideoComments(this.video.id, this.currentPage).subscribe(comments => this.videoComments = comments);
+    this.videoService.getVideoComments(this.video.id, this.currentPage).subscribe(comments => {
+      this.videoComments = comments;
+    });
   }
 
 }

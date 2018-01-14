@@ -19,20 +19,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public currentPage: number;
   private selectedCategorySubscriber: Subscription;
   private videoListSubscriber: Subscription;
+  public loading = false;
 
   constructor(private transition: Transition, private stateService: StateService,
               private videoService: VideoService, private categoryService: CategoryService) {}
 
   public changePage(page: number): void {
+    this.loading = true;
     this.currentPage = page;
     this.videoService.updateVideoList(this.selectedCategory, undefined, page);
     this.stateService.go('.', {category: this.selectedCategory.id, page: page});
   }
 
   ngOnInit() {
+    this.loading = true;
     this.totalVideos = 0;
     this.currentPage = this.transition.params().page;
     this.videoListSubscriber = this.videoService.videoList.subscribe((videos: Video[]) => {
+      this.loading = false;
       this.categoryVideos = videos;
     });
     this.videoService.totalVideos.subscribe(totalVideos => {
