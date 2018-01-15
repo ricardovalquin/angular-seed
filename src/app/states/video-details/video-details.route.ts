@@ -10,6 +10,9 @@ export const state = {
       component: VideoDetailsComponent
     }
   },
+  data: {
+    authorization: 'logged'
+  },
   resolve: [
     {
       token: 'video',

@@ -8,6 +8,9 @@ export const state = {
       component: SearchVideosComponent
     }
   },
+  data: {
+    authorization: 'logged'
+  },
   params: {
     term: {
       value: 'asdf',

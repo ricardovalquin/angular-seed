@@ -16,7 +16,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 export class MultiTranslateHttpLoader implements TranslateLoader {
 
   constructor(private http: HttpClient, public resources: { prefix: string, suffix: string }[] = [{
-    prefix: '/assets/i18n/',
+    prefix: '**/**',
     suffix: '.json'
   }]) {
   }
