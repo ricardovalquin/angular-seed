@@ -6,7 +6,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {VideoService} from '../../core/service/video/video.service';
 import {CategoryService} from '../../core/service/category/category.service';
 
-fdescribe('DashboardComponent', () => {
+describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let stateService: StateService;

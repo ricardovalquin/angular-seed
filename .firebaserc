@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "angular-vimeo-test": "angular-vimeo-test",
+    "default": "angular-vimeo-test"
+  }
+}
