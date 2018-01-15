@@ -1,14 +1,6 @@
-//break points
-$gt-sm-min-width: 960px !default;
+@import "../../common-styles";
 
-// General variables
-$nav-bar-width: 300px !default;
-$footer-height: 40px !default;
 $border-color: #D2D2D2 !default;
-$header-height: 80px !default;
-//video detail
-$title-color: #635492 !default;
-
 
 .video-detail-container {
   min-height: 100%;
@@ -164,7 +156,7 @@ $title-color: #635492 !default;
     }
 
     .video-title {
-      color: $title-color;
+      color: $video-text-color;
       font-size: 40px;
       margin-bottom: 0;
     }

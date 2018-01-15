@@ -16,7 +16,7 @@ function requireAuthentication(transition) {
   const stateData = transition.targetState().$state().data;
 
   authSvc.userIsLogged().subscribe(returnData => {
-    if ('logged' === stateData && returnData) {
+    if ('logged' === stateData.authorization && returnData) {
       return $state.target('app.dashboard');
     } else {
       return $state.target('login');

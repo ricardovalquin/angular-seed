@@ -16,13 +16,13 @@ body {
         li.page-item {
           &.active {
             > a {
-              background: #635592;
-              border-color: #635592;
+              background: #02627a;
+              border-color: #02627a;
               color: white;
             }
           }
           a {
-            color: #635592;
+            color: #02627a;
             text-decoration: none;
             .sr-only {
               display: none;
