@@ -1,6 +1,7 @@
 import {UIRouter} from '@uirouter/angular';
 import {Injector} from '@angular/core';
 import {AuthGuardService} from '../core/service/guard/auth-guard.service';
+import {toPromise} from 'rxjs/operator/toPromise';
 
 /** UIRouter Config  */
 export function uiRouterConfigFn(router: UIRouter, injector: Injector) {
@@ -15,11 +16,11 @@ function requireAuthentication(transition) {
   const authSvc = transition.injector().get(AuthGuardService);
   const stateData = transition.targetState().$state().data;
 
-  authSvc.userIsLogged().subscribe(returnData => {
-    if ('logged' === stateData.authorization && returnData) {
-      return $state.target('app.dashboard');
-    } else {
+  return authSvc.userIsLogged().toPromise().then(returnData => {
+    if ('logged' === stateData.authorization && !returnData) {
       return $state.target('login');
+    } else if ('notLogged' === stateData.authorization && returnData) {
+      return $state.target('app.dashboard');
     }
   });
 }
