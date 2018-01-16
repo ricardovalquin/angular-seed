@@ -25,9 +25,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.categoryList.subscribe(categories => {
       this.categoryList = categories;
-      this.selectCategory(this.categoryList[0]);
-      // this.selectCategory(this.transition.params().category !== undefined ?
-      //   this.transition.params().category : this.categoryList[0]);
+      this.selectCategory(this.transition.params().category ? this.categoryList
+        .find(category => category.id === this.transition.params().category) : this.categoryList[0]);
     });
     this.commonService.navBarState.subscribe(navBarState => this.navBarState = navBarState);
   }

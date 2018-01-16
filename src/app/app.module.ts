@@ -63,10 +63,9 @@ import {ANIMATION_TYPES, LoadingModule} from 'ngx-loading';
     MomentModule,
     LoadingModule.forRoot({
       animationType: ANIMATION_TYPES.wanderingCubes,
-      backdropBackgroundColour: 'rgba(0,0,0,0.5)',
-      backdropBorderRadius: '4px',
-      primaryColour: '#ffffff',
-      secondaryColour: '#ffffff',
+      backdropBackgroundColour: '#FFFFFF',
+      primaryColour: '#3baac6',
+      secondaryColour: '#3baac6',
       tertiaryColour: '#ffffff'
     }),
     TranslateModule.forRoot({

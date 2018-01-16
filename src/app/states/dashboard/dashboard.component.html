@@ -1,6 +1,7 @@
 <div class="dashboard-component">
   <div class="main-content-block">
     <div class="video-wrapper">
+      <ngx-loading [show]="loading"></ngx-loading>
       <div class="video-container">
         <div class="figure-wrapper" *ngFor="let video of categoryVideos"
              uiSref="app.details" [uiParams]="{ videoId: video.id }">
