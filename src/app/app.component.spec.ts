@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {TranslateService} from '@ngx-translate/core';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
 
   const translateServiceStub = {
     addLangs: () => true,

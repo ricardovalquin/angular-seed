@@ -4,7 +4,7 @@ import { CategoryResource } from './category.resource';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 
-fdescribe('CategoryResource', () => {
+describe('CategoryResource', () => {
 
   let categoryResourceMock: CategoryResource;
   let httpMock: HttpTestingController;

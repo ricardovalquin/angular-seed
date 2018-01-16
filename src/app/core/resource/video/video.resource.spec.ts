@@ -5,7 +5,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {Category} from '../../model/category/category';
 
 
-fdescribe('VideoResource', () => {
+describe('VideoResource', () => {
   let videoResourceMock: VideoResource;
   let httpMock: HttpTestingController;
 

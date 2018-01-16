@@ -5,7 +5,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {StateService} from '@uirouter/core/lib';
 import {User} from '../../model/user/user.model';
 
-fdescribe('AuthenticationService', () => {
+describe('AuthenticationService', () => {
 
   let authenticationServiceMock: AuthenticationService;
   let httpMock: HttpTestingController;

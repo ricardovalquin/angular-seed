@@ -5,7 +5,7 @@ import {VideoResource} from '../../resource/video/video.resource';
 import {of} from 'rxjs/observable/of';
 import {Category} from '../../model/category/category';
 
-fdescribe('VideoService', () => {
+describe('VideoService', () => {
 
   let videoServiceMock: VideoService;
   let videoResourceMock: VideoResource;

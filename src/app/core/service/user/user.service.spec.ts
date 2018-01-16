@@ -5,7 +5,7 @@ import {of} from 'rxjs/observable/of';
 import {UserResource} from '../../resource/user/user.resource';
 import {User} from '../../model/user/user.model';
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
 
   let userServiceMock: UserService;
   let userResourceMock: UserResource;

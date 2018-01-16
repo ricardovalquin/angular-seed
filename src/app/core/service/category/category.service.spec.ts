@@ -4,7 +4,7 @@ import { CategoryService } from './category.service';
 import {CategoryResource} from '../../resource/category/category.resource';
 import {of} from 'rxjs/observable/of';
 
-fdescribe('CategoryService', () => {
+describe('CategoryService', () => {
   let categoryServiceMock: CategoryService;
   let categoryResourceMock: CategoryResource;
 
