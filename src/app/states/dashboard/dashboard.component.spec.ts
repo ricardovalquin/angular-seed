@@ -1,15 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {Transition, StateService} from '@uirouter/angular/lib';
+import {Transition, StateService, UIRouterModule} from '@uirouter/angular/lib';
 
 import { DashboardComponent } from './dashboard.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {VideoService} from '../../core/service/video/video.service';
 import {CategoryService} from '../../core/service/category/category.service';
+import {TranslateModule} from '@ngx-translate/core';
+import {APP_BASE_HREF} from '@angular/common';
 
-fdescribe('DashboardComponent', () => {
+xdescribe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let stateService: StateService;
+
+  const transitionStub = {
+    params: () => {
+      return {category: 'animation', page: '1'};
+    }
+  };
 
   const stateServiceStub = {
     go: () => {
@@ -17,36 +25,36 @@ fdescribe('DashboardComponent', () => {
     }
   };
 
-  const transitionStub = {
-    params: () => {
-      return {category: 'animation', page: '1'};
-    }
-  };
   const videoServiceStub = {
     updateVideoList: () => {
-      return true;
+      return Promise.resolve(true);
     },
     videoList: () => {
-      return true;
+      return Promise.resolve(true);
     },
     totalVideos: () => {
-      return true;
+      return Promise.resolve(true);
     }
   };
 
   const categoryServiceStub = {
     getSelectedCategory: () => {
-      return Promise.resolve();
+      return Promise.resolve(true);
     },
     setSelectedCategory: () => {
-      return Promise.resolve();
+      return Promise.resolve(true);
     }
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DashboardComponent ],
+      imports: [
+        UIRouterModule.forRoot(),
+        TranslateModule.forRoot()
+      ],
       providers: [
+        {provide: APP_BASE_HREF, useValue: '/'},
         {provide: StateService, useValue: stateServiceStub},
         {provide: Transition, useValue: transitionStub},
         {provide: VideoService, userValue: videoServiceStub},
